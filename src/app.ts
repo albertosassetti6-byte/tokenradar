@@ -1,4 +1,4 @@
-import { TokenData } from './types';
+
 
 export class TrendingTokenRadar {
   private apiUrl: string = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=8&page=1&sparkline=false';
