@@ -27,7 +27,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install TypeScript & Compile
         run: |
@@ -40,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Carica tutti i file (inclusa la cartella dist/ appena generata)
+          path: '.'
 
       - name: Deploy to GitHub Pages
         id: deployment
