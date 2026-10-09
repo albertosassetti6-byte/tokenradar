@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-# Permessi necessari per pubblicare su GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -26,16 +25,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/node- 適4
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install TypeScript & Compile
         run: |
-          if [ -f package.json ]; then npm ci; else npm install -g typescript; fi
-
-      - name: Compile TypeScript
-        run: npx tsc
+          npm install -g typescript
+          tsc
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -43,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Carica la radice del repository (contenente index.html, dist/, style.css)
+          path: '.' # Carica tutti i file (inclusa la cartella dist/ appena generata)
 
       - name: Deploy to GitHub Pages
         id: deployment
