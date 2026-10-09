@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trending Token Radar</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Librerie Esterne via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
 
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <span>Data Feeds Connected: <strong>MetaTrader 5 Feed</strong> & <strong>biquote.io</strong></span>
+    <span class="live-tag"><i data-lucide="radio"></i> Live (Auto-refresh 5s)</span>
+  </div>
+
+  <!-- Header & Hero -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="badge">Market Data Provided by CoinGecko</div>
+      <h1 class="main-title">Trending Token Radar</h1>
+      <p class="slogan">Rilevamento in tempo reale di anomalie di Volume, Prezzo e Liquidità sul mercato Crypto</p>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- Sezione 1: KPI Summary -->
+    <section class="horizontal-section">
+      <div class="section-header">
+        <h2><i data-lucide="activity"></i> Panoramica Anomalie</h2>
+        <span class="refresh-indicator">Prossimo aggiornamento in: <strong id="timer">5</strong>s</span>
+      </div>
+      
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon volume-bg"><i data-lucide="bar-chart-2"></i></div>
+          <div class="kpi-data">
+            <span class="kpi-title">Picco Volume Medio</span>
+            <span class="kpi-value" id="avg-volume-spike">+0%</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon price-bg"><i data-lucide="trending-up"></i></div>
+          <div class="kpi-data">
+            <span class="kpi-title">Token Anomali Rilevati</span>
+            <span class="kpi-value" id="anomaly-count">0</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon liquidity-bg"><i data-lucide="droplets"></i></div>
+          <div class="kpi-data">
+            <span class="kpi-title">Liquidità Iniettata (24h)</span>
+            <span class="kpi-value" id="total-liquidity">$0.0M</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sezione 2: Grafico Volumi -->
+    <section class="horizontal-section">
+      <div class="section-header">
+        <h2><i data-lucide="line-chart"></i> Analisi Grafica dei Volumi</h2>
+      </div>
+      <div class="chart-container">
+        <canvas id="volumeChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Sezione 3: Tabella Radar Token -->
+    <section class="horizontal-section">
+      <div class="section-header">
+        <h2><i data-lucide="radar"></i> Radar Token in Aumento Anomalo</h2>
+      </div>
+      <div class="table-responsive">
+        <table class="radar-table">
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th>Prezzo</th>
+              <th>Var. 24h</th>
+              <th>Volume 24h</th>
+              <th>Score Anomalia</th>
+              <th>Stato Radar</th>
+            </tr>
+          </thead>
+          <tbody id="token-table-body">
+            <!-- Popolato via TypeScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 <strong>Trending Token Radar</strong> | Feeds: MetaTrader 5 & biquote.io | Powered by CoinGecko API</p>
+  </footer>
+
+  <!-- File JavaScript compilato o caricato da dist/src -->
+ <script src="dist/app.js"></script>
+</body>
+</html>
